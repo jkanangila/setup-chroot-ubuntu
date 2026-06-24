@@ -1,0 +1,132 @@
+
+# ==========================================
+# Operating System Files
+# ==========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+$RECYCLE.BIN/
+*.lnk
+*.sys
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.trash/
+.nfs*
+
+# ==========================================
+# IDEs and Text Editors
+# ==========================================
+# Visual Studio Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/settings.json
+*.code-workspace
+
+# JetBrains (IntelliJ, WebStorm, PyCharm, etc.)
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Sublime Text / Eclipse / NetBeans
+*.sublime-project
+*.sublime-workspace
+.metadata/
+.classpath
+.project
+.settings/
+nbproject/
+
+# Vim / Emacs
+.*.sw[a-p]
+.[a-zA-Z]*~
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list/
+
+# ==========================================
+# Dependencies and Package Managers
+# ==========================================
+node_modules/
+bower_components/
+jspm_packages/
+.npm/
+.yarn/
+yarn-error.log
+pnpm-debug.log
+.pnpm-store/
+
+# ==========================================
+# Logs, Diagnostic Data, and Caches
+# ==========================================
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+.eslintcache
+.stylelintcache
+.cache/
+.sass-cache/
+.parcel-cache/
+.next/
+.nuxt/
+
+# ==========================================
+# Environment Variables and Secrets (CRITICAL)
+# ==========================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+*.pem
+*.key
+*.cert
+*.pfx
+credentials.json
+.vscdb
+
+# ==========================================
+# Common Build Artifacts and Archives
+# ==========================================
+dist/
+build/
+out/
+bin/
+obj/
+*.exe
+*.dll
+*.so
+*.dylib
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.iso
