@@ -28,10 +28,10 @@ cd /data/data/com.termux/files/home/chroot
 
 # Download Ubuntu 24.04 LTS ARM64 rootfs
 # You can get this from several sources:
-wget https://cloud-images.ubuntu.com/releases/24.04/release/ubuntu-24.04-server-cloudimg-arm64-root.tar.xz
+wget https://cloud-images.ubuntu.com/releases/24.04/release/ubuntu-24.04.4-server-cloudimg-arm64-root.tar.xz
 
 # Or use a minimal base:
-wget https://cdimage.ubuntu.com/ubuntu-base/releases/24.04/release/ubuntu-base-24.04-base-arm64.tar.gz
+wget https://cdimage.ubuntu.com/ubuntu-base/releases/24.04/release/ubuntu-base-24.04.4-base-arm64.tar.gz
 
 # Extract
 tar -xzf ubuntu-base-24.04-base-arm64.tar.gz -C ./ubuntu/
@@ -477,10 +477,10 @@ mkdir -p /data/data/com.termux/files/home/chroot/ubuntu
 cd /data/data/com.termux/files/home/chroot
 
 # 2. Download Ubuntu base (arm64)
-wget https://cdimage.ubuntu.com/ubuntu-base/releases/24.04/release/ubuntu-base-24.04-base-arm64.tar.gz
+wget https://cdimage.ubuntu.com/ubuntu-base/releases/24.04/release/ubuntu-base-24.04.4-base-arm64.tar.gz
 
 # 3. Extract
-tar -xzf ubuntu-base-24.04-base-arm64.tar.gz -C ./ubuntu/
+tar -xzf ubuntu-base-24.04.4-base-arm64.tar.gz -C ./ubuntu/
 
 # 4. Copy all scripts into ~/chroot/
 # (Copy each script file created above)
