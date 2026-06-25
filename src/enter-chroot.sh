@@ -34,23 +34,35 @@ cleanup() {
     else
         log "INFO" "Session ended normally. Cleaning up mounts..."
     fi
+   
+
     
-    # Unmount in reverse order
-    for mount_point in proc sys dev/pts dev run termux-data; do
+    for mount_point in \
+        termux-data run dev/pts dev sys proc; do
         full_path="$CHROOT_PATH/$mount_point"
-        if mountpoint -q "$full_path" 2>/dev/null; then
+        if grep -q "$full_path" /proc/mounts; then
             log "INFO" "Unmounting $mount_point at $full_path"
-            if umount -l "$full_path" 2>/dev/null; then
-                log "INFO" "Successfully lazy-unmounted $mount_point"
-            elif umount -f "$full_path" 2>/dev/null; then
-                log "INFO" "Successfully force-unmounted $mount_point"
-            else
-                log "WARN" "Failed to unmount $mount_point, may be in use"
-            fi
-        else
-            log "DEBUG" "$mount_point is not mounted"
+            busybox umount -l "$full_path" || log "WARN" "Failed to unmount $mount_point, may be in use"
         fi
     done
+
+
+    # Unmount in reverse order
+    # for mount_point in proc sys dev/pts dev run termux-data; do
+    #     full_path="$CHROOT_PATH/$mount_point"
+    #     if mountpoint -q "$full_path" 2>/dev/null; then
+    #         log "INFO" "Unmounting $mount_point at $full_path"
+    #         if umount -l "$full_path" 2>/dev/null; then
+    #             log "INFO" "Successfully lazy-unmounted $mount_point"
+    #         elif umount -f "$full_path" 2>/dev/null; then
+    #             log "INFO" "Successfully force-unmounted $mount_point"
+    #         else
+    #             log "WARN" "Failed to unmount $mount_point, may be in use"
+    #         fi
+    #     else
+    #         log "DEBUG" "$mount_point is not mounted"
+    #     fi
+    # done
     
     log "INFO" "========== CHROOT SESSION END (exit code: $exit_code) =========="
     exit $exit_code
@@ -81,38 +93,38 @@ done
 # Mount virtual filesystems
 log "INFO" "Mounting virtual filesystems..."
 
-if mount -t proc proc "$CHROOT_PATH/proc" 2>/dev/null; then
+if busybox mount -t proc proc "$CHROOT_PATH/proc" 2>/dev/null; then
     log "INFO" "Mounted /proc"
 else
     log "WARN" "/proc mount failed or already mounted"
 fi
 
-if mount -t sysfs sys "$CHROOT_PATH/sys" 2>/dev/null; then
+if busybox mount -t sysfs sys "$CHROOT_PATH/sys" 2>/dev/null; then
     log "INFO" "Mounted /sys"
 else
     log "WARN" "/sys mount failed or already mounted"
 fi
 
-if mount --rbind /dev "$CHROOT_PATH/dev" 2>/dev/null; then
+if busybox mount --rbind /dev "$CHROOT_PATH/dev" 2>/dev/null; then
     log "INFO" "Mounted /dev (rbind)"
 else
     log "WARN" "/dev mount failed or already mounted"
 fi
 
-if mount -t devpts devpts "$CHROOT_PATH/dev/pts" -o gid=5,mode=620 2>/dev/null; then
+if busybox mount -t devpts devpts "$CHROOT_PATH/dev/pts" -o gid=5,mode=620 2>/dev/null; then
     log "INFO" "Mounted /dev/pts"
 else
     log "WARN" "/dev/pts mount failed or already mounted"
 fi
 
-if mount --rbind /run "$CHROOT_PATH/run" 2>/dev/null; then
+if busybox mount --rbind /run "$CHROOT_PATH/run" 2>/dev/null; then
     log "INFO" "Mounted /run (rbind)"
 else
     log "WARN" "/run mount failed or already mounted"
 fi
 
 # Mount Termux data for tool access
-if mount --rbind /data "$CHROOT_PATH/termux-data" 2>/dev/null; then
+if busybox mount --rbind /data "$CHROOT_PATH/termux-data" 2>/dev/null; then
     log "INFO" "Mounted /data to /termux-data (rbind)"
 else
     log "WARN" "/data mount failed or already mounted"
