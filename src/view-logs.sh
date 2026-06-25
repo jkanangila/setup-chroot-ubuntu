@@ -2,7 +2,7 @@
 # File: ~/chroot/view-logs.sh
 # View and manage logs
 
-LOG_FILE="$HOME/chroot/ubuntu.log"
+LOG_FILE="/data/data/com.termux/files/home/chroot/ubuntu.log"
 
 if [ ! -f "$LOG_FILE" ]; then
     echo "No log file found at $LOG_FILE"

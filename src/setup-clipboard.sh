@@ -2,8 +2,8 @@
 # File: ~/chroot/setup-clipboard.sh
 # Sets up clipboard sharing with logging
 
-CHROOT_PATH="$HOME/chroot/ubuntu"
-LOG_FILE="$HOME/chroot/ubuntu.log"
+CHROOT_PATH="/data/data/com.termux/files/home/chroot/ubuntu"
+LOG_FILE="/data/data/com.termux/files/home/chroot/ubuntu.log"
 
 # Ensure log directory exists
 mkdir -p "$(dirname "$LOG_FILE")"

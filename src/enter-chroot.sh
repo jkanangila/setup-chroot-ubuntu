@@ -4,9 +4,9 @@
 
 set -e
 
-CHROOT_PATH="$HOME/chroot/ubuntu"
+CHROOT_PATH="/data/data/com.termux/files/home/chroot/ubuntu"
 CHROOT_NAME="ubuntu-chroot"
-LOG_FILE="$HOME/chroot/ubuntu.log"
+LOG_FILE="/data/data/com.termux/files/home/chroot/ubuntu.log"
 
 # Ensure log directory exists
 mkdir -p "$(dirname "$LOG_FILE")"

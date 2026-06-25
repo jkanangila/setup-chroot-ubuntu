@@ -23,8 +23,8 @@ However, since you specifically want a rooted chroot with full permissions, use 
 In Termux:
 ```bash
 # Create workspace
-mkdir -p $HOME/chroot
-cd $HOME/chroot
+mkdir -p /data/data/com.termux/files/home/chroot
+cd /data/data/com.termux/files/home/chroot
 
 # Download Ubuntu 24.04 LTS ARM64 rootfs
 # You can get this from several sources:
@@ -49,9 +49,9 @@ Here's your main entry script with error handling:
 
 set -e
 
-CHROOT_PATH="$HOME/chroot/ubuntu"
+CHROOT_PATH="/data/data/com.termux/files/home/chroot/ubuntu"
 CHROOT_NAME="ubuntu-chroot"
-LOG_FILE="$HOME/chroot/ubuntu.log"
+LOG_FILE="/data/data/com.termux/files/home/chroot/ubuntu.log"
 
 # Ensure log directory exists
 mkdir -p "$(dirname "$LOG_FILE")"
@@ -201,8 +201,8 @@ Create a clipboard bridge between chroot and Termux:
 # File: ~/chroot/setup-clipboard.sh
 # Sets up clipboard sharing with logging
 
-CHROOT_PATH="$HOME/chroot/ubuntu"
-LOG_FILE="$HOME/chroot/ubuntu.log"
+CHROOT_PATH="/data/data/com.termux/files/home/chroot/ubuntu"
+LOG_FILE="/data/data/com.termux/files/home/chroot/ubuntu.log"
 
 # Ensure log directory exists
 mkdir -p "$(dirname "$LOG_FILE")"
@@ -293,8 +293,8 @@ For full Android permissions in chroot, run this initialization script:
 # File: ~/chroot/setup-android-perms.sh
 # Sets up Android permissions and storage access with logging
 
-CHROOT_PATH="$HOME/chroot/ubuntu"
-LOG_FILE="$HOME/chroot/ubuntu.log"
+CHROOT_PATH="/data/data/com.termux/files/home/chroot/ubuntu"
+LOG_FILE="/data/data/com.termux/files/home/chroot/ubuntu.log"
 
 # Ensure log directory exists
 mkdir -p "$(dirname "$LOG_FILE")"
@@ -403,7 +403,7 @@ log "INFO" "Aliases: android-storage, android-sdcard"
 # File: ~/chroot/view-logs.sh
 # View and manage logs
 
-LOG_FILE="$HOME/chroot/ubuntu.log"
+LOG_FILE="/data/data/com.termux/files/home/chroot/ubuntu.log"
 
 if [ ! -f "$LOG_FILE" ]; then
     echo "No log file found at $LOG_FILE"
@@ -473,8 +473,8 @@ esac
 ### Complete Installation Workflow
 ```bash
 # 1. Create directories
-mkdir -p $HOME/chroot/ubuntu
-cd $HOME/chroot
+mkdir -p /data/data/com.termux/files/home/chroot/ubuntu
+cd /data/data/com.termux/files/home/chroot
 
 # 2. Download Ubuntu base (arm64)
 wget https://cdimage.ubuntu.com/ubuntu-base/releases/24.04/release/ubuntu-base-24.04-base-arm64.tar.gz
